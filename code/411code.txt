@@ -1,0 +1,64 @@
+//code for the 
+#include<LiquidCrystal.h>
+#include<EEPROM.h>
+
+//Could do the led to blink when the soil is dry
+
+//LCD 
+
+LiquidCrystal lcd(A0, A1, A2, A3, A4, A5); // pins for lcd
+
+
+// if the soil is dryer than this number, then start watering
+
+const int dry = num; //need to write num for the dry int (this might need to be measure before to see what is the dry level of the soil)
+const int pumpPin = ; //pin for pump (waiting to see which pin to use)
+const int soilSensor = ; //pin for sensor (waiting for the board)
+
+
+
+void setup() {
+
+ lcd.begin(16,2); //setting up the number of rows and columns 
+ lcd.print("Soil temp level:");
+ lcd.print(soilSensor); //printing the number of sensor
+ delay(2000);
+
+
+ pinMode(pumpPin, OUTPUT);
+ pinMode(soilSensor, INPUT);
+ Serial.begin(9600);
+ digitalWrite(pumpPin, HIGH);
+ delay(5000);
+
+}
+
+
+void loop() {
+
+ // read current moisture
+ int moisture = analogRead(soilSensor); 
+ Serial.println(moisture);
+ delay(5000);
+ 
+
+ if (moisture >= dry) {
+
+   // the soil is too dry, water!
+   lcd.print("Watering and the soil temp is " + String(moisture));
+   digitalWrite(pumpPin, LOW);
+   delay(10000); // keep watering for 10 sec
+
+
+
+   // turning off water
+
+   digitalWrite(pumpPin, HIGH);
+   lcd.print("Done watering.");
+   delay(5000); //delay until the lcd is done displaying 
+ } else {
+   lcd.print("Moisture is level. The plant does not need water " + String(moisture));
+
+ }
+
+}
