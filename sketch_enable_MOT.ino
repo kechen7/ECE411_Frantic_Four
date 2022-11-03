@@ -17,9 +17,11 @@ void loop() {
   int moistVal = analogRead(MOIST_IN);
 
   digitalWrite(MOTOR_EN,HIGH);
-  delay(10000);
+  delay(1000);
   digitalWrite(MOTOR_EN,LOW);
-  delay(10000);
+  //delay(1000);
 
-  Serial.println((String)moistVal);
+  Serial.println(moistVal);
+  
+  delay(2000);
 }
