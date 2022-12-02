@@ -53,15 +53,16 @@ void loop(){
   }
 else{
   lcd.clear();
+    // Print a message on both lines of the LCD.
   lcd.setCursor(2,0);   //Set cursor to character 2 on line 0
   lcd.print("Soil is dry");
+   lcd.setCursor(2,1);   //Set cursor to character 2 on line 0
+  lcd.print(moistVal);
   digitalWrite(LED, LOW);
   delay(5000);
-  lcd.clear();
-  delay(1000);
-  // Print a message on both lines of the LCD.
-  lcd.setCursor(2,0);   //Set cursor to character 2 on line 0
-  lcd.print(moistVal);
+  
+
+
   }
 
   delay(2000);
