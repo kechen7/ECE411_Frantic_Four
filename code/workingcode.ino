@@ -38,10 +38,10 @@ void loop(){
   lcd.setCursor(2,1);
   lcd.print(moistVal);
   
-  digitalWrite(MOTOR_EN,LOW);
+  digitalWrite(MOTOR_EN,HIGH);
   delay(5000); // water 5seconds
   lcd.clear();         
-  digitalWrite(MOTOR_EN,HIGH);
+  digitalWrite(MOTOR_EN,LOW);
   lcd.setCursor(2,0);   //Set cursor to character 2 on line 0
   lcd.print("Done");
 
